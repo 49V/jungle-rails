@@ -1,15 +1,16 @@
 class Admin::CategoriesController < ApplicationController
-def index
 
-end
+  def index
+    @categories = Category.order(id: :desc).all
+  end
 
-def create
+  def create
 
-end
+  end
 
-def new
+  def new
 
-end
+  end
 
 
 end
