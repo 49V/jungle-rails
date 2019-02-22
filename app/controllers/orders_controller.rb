@@ -4,6 +4,8 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @items = LineItem.where(:order_id => params[:id])
     @products = Product.all
+    UserMailer.order_completion(@order, @products).deliver_now 
+    debugger
   end
 
   def create
