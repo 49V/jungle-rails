@@ -4,8 +4,6 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @items = LineItem.where(:order_id => params[:id])
     @products = Product.all
-    UserMailer.order_completion(@order, @products).deliver_now 
-    debugger
   end
 
   def create
@@ -13,6 +11,9 @@ class OrdersController < ApplicationController
     order  = create_order(charge)
 
     if order.valid?
+      items = LineItem.where(:order_id => order.id)
+      products = Product.all        
+      UserMailer.order_completion(order, products, items).deliver_now 
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
     else
