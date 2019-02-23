@@ -12,7 +12,8 @@
         <%= image_tag @product.image.url, class: 'main-img' %>
       </div>
 
-      <div class="col-sm-8">
+      <div class="col-sm-8">  
+        <h2>Product</h2>
         <dl class="dl-horizontal">
           <dt>Name</dt>
           <dd><%= @product.name %></dd>
@@ -23,8 +24,16 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
         </dl>
+
+        <% if collection_exists?(@reviews) %>
+        <div class="review">
+          <h2>Reviews</h2>
+          <%= render partial: 'review', collection: @reviews, products: @products, users: @users %>
+        </div>
+        <% end %>
       </div>
-    </div>
+
+    </div >
 
   </article>
 
