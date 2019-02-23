@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   post  '/login'  => 'sessions#create'
   get   '/logout' => 'sessions#destroy'
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    resources :reviews, only: [:create]
+  end
   resources :categories, only: [:show]
   resources :users, only: [:create, :new], path_names: { create: 'signup'}
 
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
     resources :products, except: [:edit, :update, :show]
     resources :categories, only: [:create, :index, :new]
   end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
