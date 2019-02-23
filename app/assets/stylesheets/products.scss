@@ -84,6 +84,19 @@ main section.products-show {
       max-width: 100%;
     }
 
+    .form-row {
+      margin: 10px;
+    
+      #review_description {
+        width: 100%;
+      }
+
+      .btn.btn-primary {
+        background-color: #d51411;
+        border-color: #de100c;
+      }
+    }
+
     h2 {
       color: #d51411;
       text-align: center;
@@ -105,3 +118,5 @@ main section.products-show {
   float: left;
   padding: 15px 5px;
 }
+
+

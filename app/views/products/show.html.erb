@@ -25,6 +25,27 @@
           <dd><%= @product.price %></dd>
         </dl>
 
+        <div class="form-group">
+          <%= form_for [@product, @review] do |form| %>
+              <div class="form-row">
+                <%= form.label :rating %>
+                <br/>
+                <%= form.select :rating, [['1'], ['2'], ['3'], ['4'], ['5']]%>
+              </div>
+              
+              <div class="form-row">
+                <%= form.label :description %>
+                <div id="review-text">
+                  <%= form.text_area :description %>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <%= form.submit 'Create Category', class: 'btn btn-primary' %>          
+              </div>
+          <% end%>
+        </div>
+
         <% if collection_exists?(@product.reviews) %>
         <div class="review">
           <h2>Reviews</h2>
