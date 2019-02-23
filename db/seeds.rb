@@ -13,6 +13,14 @@ def open_asset(file_name)
   File.open(Rails.root.join('db', 'seed_assets', file_name))
 end
 
+# Generate password digest manually
+def User.digest(password)
+  cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                BCrypt::Engine.cost
+  BCrypt::Password.create(password, cost: cost)
+end
+
+
 # Only run on development (local) instances not on production, etc.
 unless Rails.env.development?
   puts "Development seeds only (for now)!"
@@ -132,5 +140,50 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+User.create!({
+  name: "Test User 1",
+  email: "testuser1@test.com",
+  password_digest: User.digest('test') ,
+})
+
+User.create!({
+  name: "Test User 2",
+  email: "testuser2@test.com",
+  password_digest: User.digest('test') ,
+})
+
+User.create!({
+  name: "Test User 3",
+  email: "testuser3@test.com",
+  password_digest: User.digest('test') ,
+})
+
+Review.create!({
+  product_id: 1,
+  user_id: 1,
+  description: 'I am verbal',
+  rating: 1
+})
+
+Review.create!({
+  product_id: 1,
+  user_id: 2,
+  description: 'Me too',
+  rating: 4
+})
+
+Review.create!({
+  product_id: 2,
+  user_id: 3,
+  description: '',
+  rating: 4
+})
+
+Review.create!({
+  product_id: 2,
+  user_id: 1,
+  description: '',
+  rating: 5
+})
 
 puts "DONE!"
