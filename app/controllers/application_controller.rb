@@ -29,13 +29,18 @@ class ApplicationController < ActionController::Base
   end
   helper_method :cart_subtotal_cents
 
-
   def update_cart(new_cart)
     cookies[:cart] = {
       value: JSON.generate(new_cart),
       expires: 10.days.from_now
     }
     cookies[:cart]
+  end
+
+  def authenticate    
+    authenticate_or_request_with_http_basic("Administration") do |user, password| 
+      user == ENV["ADMIN_USERNAME"] && password == ENV["ADMIN_PASSWORD"] 
+    end
   end
 
 end
