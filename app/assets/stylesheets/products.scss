@@ -86,11 +86,15 @@ main section.products-show {
 
     h2 {
       color: #d51411;
+      text-align: center;
     }
 
     .review {
       .description {
         color: #6b6767;
+      }
+      .stars {
+        color: #d51411;
       }
     }
 

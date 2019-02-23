@@ -25,10 +25,10 @@
           <dd><%= @product.price %></dd>
         </dl>
 
-        <% if collection_exists?(@reviews) %>
+        <% if collection_exists?(@product.reviews) %>
         <div class="review">
           <h2>Reviews</h2>
-          <%= render partial: 'review', collection: @reviews, products: @products, users: @users %>
+          <%= render partial: 'review', collection: @product.reviews %>
         </div>
         <% end %>
       </div>

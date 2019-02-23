@@ -1,4 +1,6 @@
 <br/>
-<h4><%= @users[review.user_id - 1].name %></h4>
-<p><%= review.rating %></p>
+<h4><%= review.user.name %></h4>
+<div class="stars">
+  <%= render 'stars', rating: review.rating %>
+</div>
 <p class="description"><%= review.description %></p>
