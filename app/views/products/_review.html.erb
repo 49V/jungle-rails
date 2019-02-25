@@ -3,4 +3,9 @@
 <div class="stars">
   <%= render 'stars', rating: review.rating %>
 </div>
+
 <p class="description"><%= review.description %></p>
+
+<% if review_belongs_to_user?(review) %>
+  <%= link_to fa_icon('trash'), [@product, review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>

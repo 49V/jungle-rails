@@ -10,10 +10,18 @@ class ReviewsController < ApplicationController
     product = Product.find(review_values[:product_id])
 
     if @review.save
-      redirect_to [@review.product], notice: 'Review created!'
+      flash[:success] = "Review created."
+      redirect_to [@review.product]
     else
       render product
     end
+  end
+
+  def destroy
+      @review = Review.find(params[:id])
+      @review.destroy
+      flash[:success] = "Review deleted."
+      redirect_to [@review.product]
   end
 
   private

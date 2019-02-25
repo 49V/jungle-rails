@@ -8,9 +8,16 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def review_belongs_to_user?(review)
+    current_user == review.user
+  end
+  helper_method :review_belongs_to_user?
+
   def authorize
-    flash[:danger] = "You must be logged in to create a review."
-    redirect_to '/login' unless current_user
+    if(!current_user)
+      flash[:danger] = "You must be logged in to create a review."
+      redirect_to '/login'  
+    end
   end
 
   private
