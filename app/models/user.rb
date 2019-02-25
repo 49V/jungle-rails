@@ -10,4 +10,9 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :password, length: {minimum: 6}
 
+  # Validates whether a user exists based upon email and password
+  def self.authenticate_with_credentials(email, password)
+    (user = User.find_by(email: email).try(:authenticate, password)) ? user : nil
+  end
+
 end
