@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
+    flash[:danger] = "You must be logged in to create a review."
     redirect_to '/login' unless current_user
   end
 

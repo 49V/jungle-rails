@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  before_action :authorize
+
   def create
     review_values = review_params 
     review_values[:product_id] = params[:product_id]
