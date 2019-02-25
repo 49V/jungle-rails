@@ -79,4 +79,14 @@ RSpec.describe User, type: :model do
     expect(@user.id).to be_nil
   end
 
+  it 'should not validate user with password length below minimum length' do
+    @user = User.create(
+      name: "Beans",
+      email: "beans@bean.com",
+      password: "cats",
+      password_confirmation: "cats"
+    )
+    expect(@user.id).to be_nil
+  end
+
 end
