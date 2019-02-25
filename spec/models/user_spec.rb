@@ -62,15 +62,21 @@ RSpec.describe User, type: :model do
   end
 
   it 'should not validate user without email' do
-
+    @user = User.create(
+      name: "Beans",
+      password: "catsrule",
+      password_confirmation: "catsrule"
+    )
+    expect(@user.id).to be_nil
   end
 
-  it 'should not validate user without first name' do
-
-  end
-
-  it 'should not validate user without last name' do
-
+  it 'should not validate user without name' do
+    @user = User.create(
+      email: "beans@bean.com",
+      password: "catsrule",
+      password_confirmation: "catsrule"
+    )
+    expect(@user.id).to be_nil
   end
 
 end
