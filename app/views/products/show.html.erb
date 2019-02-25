@@ -41,7 +41,7 @@
               </div>
 
               <div class="form-row">
-                <%= form.submit 'Create Category', class: 'btn btn-primary' %>          
+                <%= form.submit 'Create Review', class: 'btn btn-primary' %>          
               </div>
           <% end%>
         </div>
@@ -49,7 +49,7 @@
         <% if collection_exists?(@product.reviews) %>
         <div class="review">
           <h2>Reviews</h2>
-          <%= render partial: 'review', collection: @product.reviews %>
+          <%= render partial: 'review', collection: @product.reviews.reverse %>
         </div>
         <% end %>
       </div>
