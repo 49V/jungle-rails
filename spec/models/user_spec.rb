@@ -105,6 +105,14 @@ RSpec.describe User, type: :model do
       expect(User.authenticate_with_credentials(@user.email, @user.password)).to be_a User  
     end
 
+    it 'should authenticate a user that exists with correct email with spaces and password' do
+      expect(User.authenticate_with_credentials(" #{@user.email} " , @user.password)).to be_a User  
+    end
+
+    it 'should authenticate a user that exists without being case sensitive when using correct email and password' do
+      expect(User.authenticate_with_credentials(@user.email.capitalize , @user.password)).to be_a User  
+    end
+
     it 'should not authenticate a user that does not exist' do
       expect(User.authenticate_with_credentials('dontexist@test.com', @user.password)).to be nil  
     end
@@ -112,6 +120,8 @@ RSpec.describe User, type: :model do
     it 'should not authenticate a user with correct email, but incorrect password' do
       expect(User.authenticate_with_credentials(@user.email, 'incorrectpassword')).to be nil
     end    
+
+    
 
   end
 
