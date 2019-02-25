@@ -15,7 +15,8 @@ class OrdersController < ApplicationController
       products = Product.all        
       UserMailer.order_completion(order, products, items).deliver_now 
       empty_cart!
-      redirect_to order, notice: 'Your Order has been placed.'
+      flash[:success] = 'Your Order has been placed.'
+      redirect_to order
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end
