@@ -1,6 +1,6 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2.
+A mini e-commerce application built with Rails 4.2 and an accompanying test suite built with RSpec 3.5
 
 ![Catalog](https://github.com/49V/jungle-rails/blob/master/docs/Catalog.png?raw=true_)
 ![Product](https://github.com/49V/jungle-rails/blob/master/docs/Product.png?raw=true_)
