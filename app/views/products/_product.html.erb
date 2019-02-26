@@ -4,6 +4,9 @@
       <%= image_tag product.image.thumb, alt: product.name %>
       <h4><%= product.name %></h4>
     <% end %>
+    <% if product.reviews_exist? %>
+    <%= render 'stars', rating: product.get_average_rating %> (<%= product.reviews.length %>)
+    <% end %>
   </header>
   <p class="description">
     <%= product.description %>
