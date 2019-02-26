@@ -5,6 +5,9 @@ A mini e-commerce application built with Rails 4.2.
 ![Catalog](https://github.com/49V/jungle-rails/blob/master/docs/Catalog.png?raw=true_)
 ![Product](https://github.com/49V/jungle-rails/blob/master/docs/Product.png?raw=true_)
 ![Categories](https://github.com/49V/jungle-rails/blob/master/docs/Categories.png?raw=true_)
+![Cart](https://github.com/49V/jungle-rails/blob/master/docs/Cart.png?raw=true_)
+![Checkout](https://github.com/49V/jungle-rails/blob/master/docs/Checkout.png?raw=true_)
+
 
 ## Setup
 
